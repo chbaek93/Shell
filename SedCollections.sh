@@ -23,4 +23,7 @@ sed 's/\([^:]*\).*/\1/' /etc/passwd
 # -- Enclose first character -- #
 sed 's/\(\b[A-Z]\)/\(\1\)/g' data.txt
 
+# -- Swap field -- #
+sed 's/\([^,]*\),\([^,]*\),\(.*\).*/\2,\1,\3/g' data.txt
+
 
