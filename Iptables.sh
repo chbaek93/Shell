@@ -5,7 +5,7 @@
 # -- Env : vim sw=4, ts=4
 
 # Define Some Variables
-ipt=/usr/bin/iptables
+ipt=/sbin/iptables
 
 allow_tcp_port="22 25 53 80 110 143 873 3306 5432 "
 allow_udp_port="53"
