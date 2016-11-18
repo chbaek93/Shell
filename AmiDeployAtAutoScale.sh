@@ -8,8 +8,8 @@ set -x
 DeployLog=/tmp/deploy-$(date +%Y%m%d\ %H%M%S).log
 echo "$AutoScaleName :$AmiId" > $DeployLog
 
-ServerTagValue=STG-${ServerType^^}
-AutoScaleName=real-${ServerType,,}-asg
+ServerTagValue=Staging-${ServerType^^}
+AutoScaleName=Prod-${ServerType,,}-AutoScaleGroup
 
 ServerTagName=Purpose
 AsgTagName=aws:autoscaling:groupName
