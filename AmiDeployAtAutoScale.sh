@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # -- chb@mz.co.kr , Nov 10, 2016
 # -- 
