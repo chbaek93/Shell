@@ -4,6 +4,11 @@
 # -- Set Iptables
 # -- Env : vim sw=4, ts=4
 
+# sysctl net.ipv4.ip_forward
+# net.ipv4.ip_forward = 0
+# sysctl -w net.ipv4.ip_forward=1
+echo 1 > /proc/sys/net/ipv4/ip_forward
+
 # Define Some Variables
 ipt=/sbin/iptables
 
