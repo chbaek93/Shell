@@ -1,10 +1,9 @@
 #!/bin/sh
 
 # -- chb@mz.co.kr , Nov 10, 2016
-# -- 
 ServerType=${1:?" ==> usage:  ${0} WEB|WAS"}
 
-set -x
+#set -x
 DeployLog=/tmp/deploy-$(date +%Y%m%d\ %H%M%S).log
 echo "$AutoScaleName :$AmiId" > $DeployLog
 
