@@ -69,9 +69,9 @@ $ipt -A $log -m limit --limit 2/min -j LOG --log-prefix "Iptables Packet Dropped
 $ipt -A $log -j DROP
 
 # -- Load Balancer -- #
-$ipt -t nat -A PREROUTING -p tcp -i $dev -d 0.0.0.0 --dort 80 -j DNAT --to 10.10.10.10:80
-$ipt -t nat -A PREROUTING -p tcp -i $dev -d 0.0.0.0 --dort 80 -j DNAT --to 10.10.10.11:80
-$ipt -t nat -A PREROUTING -p tcp -i $dev -d 0.0.0.0 --dort 80 -j DNAT --to 10.10.10.12:80
+$ipt -t nat -A PREROUTING -p tcp -i $dev -d 0/0 --dort 80 -j DNAT --to 10.10.10.10:80
+$ipt -t nat -A PREROUTING -p tcp -i $dev -d 0/0 --dort 80 -j DNAT --to 10.10.10.11:80
+$ipt -t nat -A PREROUTING -p tcp -i $dev -d 0/0 --dort 80 -j DNAT --to 10.10.10.12:80
 
 # -- Redirect Port -- #
 $ipt -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080
