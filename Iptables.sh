@@ -1,8 +1,9 @@
 #!/bin/sh
 
-# -- chb@mz.co.kr , Nov 10, 2016
-# -- Set Iptables
-# -- Env : vim sw=4, ts=4
+# -- chb@mz.co.kr , Nov 10, 2016 -- # 
+# -- Set Iptables 
+# -- Env : vim sw=4, ts=4 -- # 
+# -- Comments : Sometimes Useful -- # 
 
 # sysctl net.ipv4.ip_forward
 # net.ipv4.ip_forward = 0
@@ -33,6 +34,8 @@ $ipt -t mangle -Z
 $ipt -P OUTPUT ACCEPT
 $ipt -P FORWARD ACCEPT
 $ipt -P INPUT ACCEPT
+
+# -- Completed Flushing -- # 
 
 for tcp_port in $allow_port;
 do
