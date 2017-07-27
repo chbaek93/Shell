@@ -10,5 +10,5 @@ cat ~/.ssh/id_rsa.pub
 # Paste Public Key at authorized_keys file of ec2-user
 cat >> authorized_keys 
 
+# -- Client take the id_rsa Key and Server take the id_rsa.pub -- # 
 # -- End of Line -- #
-
