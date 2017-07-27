@@ -2,6 +2,6 @@
 
 # -- chb@mz.co.kr -- # 
 
-awk '/httpd/ {print $1,$2}' /etc/passwd
+awk '/httpd/ {print $0}' /etc/passwd | cut -d: -f2 
 
 
