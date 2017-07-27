@@ -37,6 +37,9 @@ $ipt -P INPUT ACCEPT
 
 # -- Completed Flushing -- # 
 
+# -- Accept packets for active sessions -- # 
+$ipt -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+
 for tcp_port in $allow_port;
 do
     $ipt -A INPUT -i $dev -p tcp --deport $tcp_port -m state --state NEW,ESTABLISHED -j ACCEPT
@@ -73,8 +76,18 @@ $ipt -t nat -A PREROUTING -p tcp -i $dev -d 0/0 --dort 80 -j DNAT --to 10.10.10.
 $ipt -t nat -A PREROUTING -p tcp -i $dev -d 0/0 --dort 80 -j DNAT --to 10.10.10.11:80
 $ipt -t nat -A PREROUTING -p tcp -i $dev -d 0/0 --dort 80 -j DNAT --to 10.10.10.12:80
 
+# -- Load Balancing by nth Module, Is this working ? -- # 
+$ipt -t nat -A PREROUTING -p tcp --dport 80 -m state NEW -m statistic --mode nth --every 1 --packet 0 -j DNAT --to-destination 10.10.10.10:80
+$ipt -t nat -A PREROUTING -p tcp --dport 80 -m state NEW -m statistic --mode nth --every 2 --packet 0 -j DNAT --to-destination 10.10.10.11:80
+$ipt -t nat -A PREROUTING -p tcp --dport 80 -m state NEW -m statistic --mode nth --every 3 --packet 0 -j DNAT --to-destination 10.10.10.12:80
+
+
 # -- Redirect Port -- #
 $ipt -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080
+
+
+# -- MASQUERADE -- # 
+$ipt -t nat -A POSTROUTING -j MASQUERADE 
 
 
 # -- Check Iptables -- #
