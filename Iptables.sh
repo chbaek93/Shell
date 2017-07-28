@@ -71,6 +71,9 @@ $ipt -A INPUT -j $log
 $ipt -A $log -m limit --limit 2/min -j LOG --log-prefix "Iptables Packet Dropped: " --log-level 7
 $ipt -A $log -j DROP
 
+# -- Accept for multiports -- # 
+$ipt -A INPUT -m state --state NEW -m multiport -p tcp -s 0/0 -d 10.10.10.10/24 --dports 80,8080 -j ACCEPT
+
 # -- Load Balancer -- #
 $ipt -t nat -A PREROUTING -p tcp -i $dev -d 0/0 --dort 80 -j DNAT --to 10.10.10.10:80
 $ipt -t nat -A PREROUTING -p tcp -i $dev -d 0/0 --dort 80 -j DNAT --to 10.10.10.11:80
