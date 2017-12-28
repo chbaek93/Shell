@@ -1,0 +1,13 @@
+
+# -- File : .ssh/config -- # 
+# -- On Dec 28, 2017 -- # 
+
+Host * 
+  ServerAliveInterval 120 
+  
+
+# -- Edit /etc/ssh/sshd_config as: -- # 
+
+ClientAliveInterval 900
+ClientAliveCountMax 0
+
