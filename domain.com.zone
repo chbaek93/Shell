@@ -1,0 +1,14 @@
+$TTL 10
+@     IN     SOA    domain.com.     admin.domain.com. (
+                        2018022203 ; serial
+                        21600      ; refresh after 6 hours
+                        3600       ; retry after 1 hour
+                        604800     ; expire after 1 week
+                        86400 )    ; minimum TTL of 1 day
+
+@       IN      NS      ns1 
+@       IN      NS      ns2 
+ns1     IN      A       127.0.0.1
+ns2     IN      A       127.0.0.1
+www     IN      A       127.0.0.1
+ftp     IN      CNAME   www
