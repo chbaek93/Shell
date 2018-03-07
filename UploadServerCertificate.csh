@@ -9,6 +9,7 @@ set CrtKey = $Path'mydomain.com_crt.pem'
 set PrivateKey = $Path'mydomain.com_key.pem'
 set ChainKey = $Path'CHAINCA.pem'
 set Profile = 'default'
+set Region = 'ap-northeast-2'
 
 # -- Uploads a server certificate entity for the AWS account -- # 
 aws iam upload-server-certificate \
@@ -18,3 +19,6 @@ aws iam upload-server-certificate \
     --certificate-chain file://$ChainKey \
     --path /cloudfront/$CertificateName/  \
     --profile $Profile
+
+# -- Lists the server certificates stored in IAM that have the specified path prefix -- # 
+aws iam list-server-certificates --profile $Profile --region $Region 
