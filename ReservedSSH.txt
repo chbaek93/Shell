@@ -10,5 +10,3 @@ or
 
 ~/.ssh/config 
 ServerAliveInterval 50
-
-50 Seconds 
